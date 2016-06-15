@@ -241,24 +241,25 @@ nv.models.tooltip = function() {
                     .style('opacity', 0);
             } else {
                 // using tooltip.style('transform') returns values un-usable for tween
-                var old_translate = 'translate(' + lastPosition.left + 'px, ' + lastPosition.top + 'px)';
-                var new_translate = 'translate(' + Math.round(left) + 'px, ' + Math.round(top) + 'px)';
-                var translateInterpolator = d3.interpolateString(old_translate, new_translate);
-                var is_hidden = tooltip.style('opacity') < 0.1;
+                // var old_translate = 'translate(' + lastPosition.left + 'px, ' + lastPosition.top + 'px)';
+                // var new_translate = 'translate(' + Math.round(left) + 'px, ' + Math.round(top) + 'px)';
+                // var translateInterpolator = d3.interpolateString(old_translate, new_translate);
+                // var is_hidden = tooltip.style('opacity') < 0.1;
 
                 tooltip
-                    .interrupt() // cancel running transitions
-                    .transition()
-                    .duration(is_hidden ? 0 : duration)
-                    // using tween since some versions of d3 can't auto-tween a translate on a div
-                    .styleTween('transform', function (d) {
-                        return translateInterpolator;
-                    }, 'important')
-                    // Safari has its own `-webkit-transform` and does not support `transform`
-                    .styleTween('-webkit-transform', function (d) {
-                        return translateInterpolator;
-                    })
-                    .style('-ms-transform', new_translate)
+                    // .interrupt() // cancel running transitions
+                    // .transition()
+                    // .duration(is_hidden ? 0 : duration)
+                    // // using tween since some versions of d3 can't auto-tween a translate on a div
+                    // .styleTween('transform', function (d) {
+                    //     return translateInterpolator;
+                    // }, 'important')
+                    // // Safari has its own `-webkit-transform` and does not support `transform`
+                    // .styleTween('-webkit-transform', function (d) {
+                    //     return translateInterpolator;
+                    // })
+                    // .style('-ms-transform', new_translate)
+                    .style('top', top + 'px').style('left', left + 'px')
                     .style('opacity', 1);
             }
 
