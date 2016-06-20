@@ -244,13 +244,13 @@ nv.models.tooltip = function() {
                 // var old_translate = 'translate(' + lastPosition.left + 'px, ' + lastPosition.top + 'px)';
                 // var new_translate = 'translate(' + Math.round(left) + 'px, ' + Math.round(top) + 'px)';
                 // var translateInterpolator = d3.interpolateString(old_translate, new_translate);
-                // var is_hidden = tooltip.style('opacity') < 0.1;
+                var is_hidden = tooltip.style('opacity') < 0.1;
 
                 tooltip
-                    // .interrupt() // cancel running transitions
-                    // .transition()
-                    // .duration(is_hidden ? 0 : duration)
-                    // // using tween since some versions of d3 can't auto-tween a translate on a div
+                    .interrupt() // cancel running transitions
+                    .transition()
+                    .duration(is_hidden ? 0 : duration)
+                    // using tween since some versions of d3 can't auto-tween a translate on a div
                     // .styleTween('transform', function (d) {
                     //     return translateInterpolator;
                     // }, 'important')
